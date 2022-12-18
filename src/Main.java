@@ -25,5 +25,6 @@ public class Main {
                 toppings.replace(toppings.length() - 2, toppings.length() - 1, ""));
         System.out.println("This is the price of the burger toppings: $" + price);
 
+        Toppings.printToppingSelector();
     }
 }

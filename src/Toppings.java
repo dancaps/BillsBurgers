@@ -13,8 +13,15 @@ public enum Toppings {
     final String name;
     final double price;
 
-    Toppings (String name, double price) {
+    Toppings(String name, double price) {
         this.name = name;
         this.price = price;
     }
+
+    public static void printToppingSelector() {
+        for(int i = 0; i < Toppings.values().length; i++) {
+            System.out.println(i + 1 + ". " + Toppings.values()[i].name);
+        }
+    }
+
 }

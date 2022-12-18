@@ -1,67 +1,211 @@
-Bill Burgers
+Bills Burgers
 
 Classes
-MealOrder
-    burger
-    drink
-    side
+Main
+    boolean isRunning = true
+    Scanner s = new Scanner(System.in)
+    String input;
 
-    constructor ()
-        regular burger
-        small coke
-        small fries
+    do
+        System.out.printf(
+            1. Would you like a small order with the following items?
+                Regular Burger with Lettuce, Tomato, and Mustard
+                Small Fries
+                Small Coke
+            2. Would you like to create your own custom order?
+            3. Enter [quit] to end the program)
+        input = s.nextLine()
 
-    constructor (burger, coke, fries)
-        TO DO
+        if input.equals("1")
+            SingleOrder order = new SingleOrder()
+            order.checkoutDetails()
+            isRunning = false
+        else if input.equals("2")
+            SingleOrder order = new SingleOrder("Custom")
+            order.checkoutDetails()
+            isRunning = false
+        else if input.equals("quit")
+            System.out.println("We are sorry you didn't want to order a burger.")
+            isRunning = false
+        else
+            System.out.println("That was an invalid selection. Please try again.")
 
-Drink
-    size
-    type
+    System.out.println("Thanks for visiting. See you next time.")
+
+SingleOrder
+    Burger burger;
+    Drink drink;
+    Side side;
+
+    Scanner s = new Scanner(System.in)
+
+    constructor()
+        constructor("Custom")
+
+    constructor(String mealType)
+        if mealType.equals("Custom")
+            createsBurger()
+            createDrink()
+            createSide()
+        else
+            createDefaultMeal
+
+    createBurger()
+        String burgerType;
+        boolean isCreatingBurger = true
+
+        System.out.println("Regular burgers get 3 toppings and deluxe burgers get 5 toppings")
+        do
+            System.out.print("Would you like a [Regular] or [Deluxe] burger?")
+            burgerType = s.nextLine()
+            print toppings
+
+            if burgerType.equals("Regular")
+                System.out.print("Enter your first topping: ")
+                String toppingOne = s.nextLine()
+                System.out.print("Enter your first topping: ")
+                String toppingTwo = s.nextLine()
+                System.out.print("Enter your first topping: ")
+                String toppingThree = s.nextLine()
+                addRegularToppings(toppingOne, toppingTwo, typeThree)
+                isCreatingBurger = false
+            else if
+                System.out.print("Enter your first topping: ")
+                toppingOne = s.nextLine()
+                System.out.print("Enter your first topping: ")
+                toppingTwo = s.nextLine()
+                System.out.print("Enter your first topping: ")
+                toppingThree = s.nextLine()
+
+
+
+
+
+
+    createDrink()
+            Ask questions about the burger
+
+    createSide()
+            Ask questions about the burger
+
+    createDefaultMeal()
+        create the default
+
+    checkoutDetails()
+        prints the order details
+
+MenuItems
     double price
+    String size
+    String description
 
-    constructor (size, type)
+    constructor()
+        constructor("Generic Menu Item")
 
-    setPrice(size)
+    constructor(String description)
+        constructor(description, "Small")
+
+    constructor(String size, String description)
+        setDescription(description)
+        setPrice(size)
+
+    public setPrice(double price)
+        this.price = price
+
+    public setPrice(String size)
+        setSize(size)
+        switch this.size
+            small -> price = 0.0
+            medium -> price = 0.0
+            large -> price = 0.0
+            default -> price = 0.0
+
+    public setSize(String size)
         switch size
+            case small
+                this.size = small
+            case medium
+                this.size = medium
+            case large
+                this.size = large
+            default
+                this.size = small
+
+    public setDescription(String description)
+        this.description = description
+
+    @override
+    toString()
+        System.out.print(
+            "Item: " + this.description
+            "Size: " + this.size
+            "Price: " + this.price)
+
+Drink extends MenuItem
+    constructor (String size, String description)
+        super(size, description)
+
+    @override
+    setPrice(String size)
+        setSize(size)
+        switch this.size
             small -> price = 1.00
             medium -> price = 1.50
             large -> price = 2.00
+            default -> price = 0.0
 
-Side
-    type
-    price
-    size
+Side extends MenuItem
+    constructor (size, description)
+        super(size, description)
 
+    @override
+    setPrice(String size)
+        setSize(size)
+        switch this.size
+            small -> price = 1.50
+            medium -> price = 2.00
+            large -> price = 2.50
+            default -> price = 0.0
 
-Burger
-    String type
-    double price
-    double toppingPrice
+Burger extends MenuItem
+    String burgerType // regular or deluxe
+    double toppingPrice // zero until toppings are added
     StringBuilder toppings = new StringBuilder(64)
 
-    constructor (type)
-        if type is regular
-            type = regular
-            price += 5
-        if type is deluxe
-            type = deluxe
-            price += 8
+    constructor(String burgerType, String description)
+        super(description)
+        this.toppingPrice = 0.00
+        setBurgerType(burgerType)
+        setPrice(burgerType)
+
+    setBurgerType(String burgerType)
+        this.burgerType = burgerType.equals("Deluxe") ? "Deluxe" : "Regular"
+
+    setPrice(String burgerType)
+        this.price = burgerType.equals("Deluxe") ? 8.00 : 5.00
+        this.price += this.toppingPrice
+
+    @override
+    setPrice(size)
+        System.out.println("This functionality doesn't exist for burgers.")
 
     addDeluxeToppings(toppingOne, toppingTwo, typeThree, typeFour, typeFive)
+        toppingPrice = 0.00
+        toppings.setLength(0)
         for topping name in Toppings.values()
             if (topping.name.equal(toppingOne) || topping.name.equal(toppingTwo) || topping.name.equal(toppingThree) ||
             topping.name.equal(toppingFour) || topping.name.equal(toppingFive))
             toppings append topping name and ", "
-        toppingPrice = 0.00
 
     addRegularToppings(toppingOne, toppingTwo, typeThree)
         toppingPrice = 0.00
+        toppings.setLength(0)
         for topping name in Toppings.values()
             if (topping.name.equal(toppingOne) || topping.name.equal(toppingTwo) || topping.name.equal(toppingThree) ||
             topping.name.equal(toppingFour) || topping.name.equal(toppingFive))
             toppings append topping name and ", "
             price += topping.price
-
+        setPrice(this.burgerType)
 
 Toppings enum
     CHEESE("Cheese", 1.00),
@@ -78,8 +222,13 @@ Toppings enum
     final String name;
     final double price;
 
-    Toppings (String name, double price) {
+    Toppings(String name, double price) {
         this.name = name;
         this.price = price;
-    }
 
+    public static void printToppingSelector() {
+            for(int i = 0; i < Toppings.values().length; i++) {
+                System.out.println(i + 1 + ". " + Toppings.values()[i].name);
+            }
+        }
+    }
