@@ -1,0 +1,85 @@
+Bill Burgers
+
+Classes
+MealOrder
+    burger
+    drink
+    side
+
+    constructor ()
+        regular burger
+        small coke
+        small fries
+
+    constructor (burger, coke, fries)
+        TO DO
+
+Drink
+    size
+    type
+    double price
+
+    constructor (size, type)
+
+    setPrice(size)
+        switch size
+            small -> price = 1.00
+            medium -> price = 1.50
+            large -> price = 2.00
+
+Side
+    type
+    price
+    size
+
+
+Burger
+    String type
+    double price
+    double toppingPrice
+    StringBuilder toppings = new StringBuilder(64)
+
+    constructor (type)
+        if type is regular
+            type = regular
+            price += 5
+        if type is deluxe
+            type = deluxe
+            price += 8
+
+    addDeluxeToppings(toppingOne, toppingTwo, typeThree, typeFour, typeFive)
+        for topping name in Toppings.values()
+            if (topping.name.equal(toppingOne) || topping.name.equal(toppingTwo) || topping.name.equal(toppingThree) ||
+            topping.name.equal(toppingFour) || topping.name.equal(toppingFive))
+            toppings append topping name and ", "
+        toppingPrice = 0.00
+
+    addRegularToppings(toppingOne, toppingTwo, typeThree)
+        toppingPrice = 0.00
+        for topping name in Toppings.values()
+            if (topping.name.equal(toppingOne) || topping.name.equal(toppingTwo) || topping.name.equal(toppingThree) ||
+            topping.name.equal(toppingFour) || topping.name.equal(toppingFive))
+            toppings append topping name and ", "
+            price += topping.price
+
+
+Toppings enum
+    CHEESE("Cheese", 1.00),
+    BACON("Bacon", 1.50),
+    ONION("Onion", .25),
+    JALAPENO("Jalapeno", .50),
+    EXTRA_MEAT("Extra Meat", 2.5),
+    LETTUCE("Lettuce", .25),
+    TOMATO("Tomato", .25),
+    MUSTARD("Mustard", .10),
+    KETCHUP("Ketchup", .10),
+    MAYONNAISE("Mayonnaise", .10);
+
+    final String name;
+    final double price;
+
+    Toppings (String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
